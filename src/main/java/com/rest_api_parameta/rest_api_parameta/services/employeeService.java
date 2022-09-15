@@ -32,20 +32,14 @@ public class employeeService {
         return employeerepository.findById(id);
     }
 
-
-    // public ArrayList<UsuarioModel>  obtenerPorPrioridad(Integer prioridad) {
-    //     return usuarioRepository.findByPrioridad(prioridad);
-    // }
-
-    // public boolean eliminarUsuario(Long id) {
-    //     try{
-    //         usuarioRepository.deleteById(id);
-    //         return true;
-    //     }catch(Exception err){
-    //         return false;
-    //     }
-    // }
-
+    public boolean deleteEmployee(Long id) {
+        try{
+            employeerepository.deleteById(id);
+            return true;
+        }catch(Exception err){
+            return false;
+        }
+    }
 
 
     // Functions and Others Methods
@@ -68,7 +62,7 @@ public class employeeService {
         Integer [] time = new Integer[3];
         time[0] = -1; time[1] = 0; time[2] = 0;
         // Check date format
-        System.out.println("Feca: "+initial_date);
+        //System.out.println("Fecha: "+initial_date);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         try {
             TemporalAccessor objeto = formatter.parse(initial_date);
