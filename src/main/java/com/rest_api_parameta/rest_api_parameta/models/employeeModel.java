@@ -1,6 +1,5 @@
 package com.rest_api_parameta.rest_api_parameta.models;
 
-import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -17,11 +16,11 @@ public class employeeModel {
     private String lastNames;
     private String documentType;
     private String documentNumber;
-    private Date dateBirth;
-    private Date dateAdmission;
+    private String dateBirth;
+    private String dateAdmission;
     private String positionCompany;
     private Double salary;
-    
+
     public Long getId() {
         return id;
     }
@@ -52,16 +51,16 @@ public class employeeModel {
     public void setDocumentNumber(String documentNumber) {
         this.documentNumber = documentNumber;
     }
-    public Date getDateBirth() {
+    public String getDateBirth() {
         return dateBirth;
     }
-    public void setDateBirth(Date dateBirth) {
+    public void setDateBirth(String dateBirth) {
         this.dateBirth = dateBirth;
     }
-    public Date getDateAdmission() {
+    public String getDateAdmission() {
         return dateAdmission;
     }
-    public void setDateAdmission(Date dateAdmission) {
+    public void setDateAdmission(String dateAdmission) {
         this.dateAdmission = dateAdmission;
     }
     public String getPositionCompany() {

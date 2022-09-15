@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rest_api_parameta.rest_api_parameta.models.employeeModel;
 import com.rest_api_parameta.rest_api_parameta.services.employeeService;
 
-
 @RestController
 @RequestMapping("/parameta/employees")
 public class employeeController {
@@ -28,12 +27,27 @@ public class employeeController {
 
     @PostMapping()
     public employeeModel saveEmployee(@RequestBody employeeModel employee){
-        return this.employeeservice.saveEmployee(employee);
+        
+        Boolean any_emptyfield = employeeservice.checkfields(employee);
+        Integer [] employee_age = employeeservice.gettime_elapsed(employee.getDateBirth());
+        Integer [] employee_time = employeeservice.gettime_elapsed(employee.getDateAdmission());
+
+        if(!any_emptyfield && employee_age[0]>=18 && employee_time[0] != -1){
+            // Save Information in Database
+            System.out.println("Save Information in Database");
+            return this.employeeservice.saveEmployee(employee);
+        }
+        else{
+            // Error in the information entered
+            System.out.println("Error in the information entered");
+            return null;
+        }
+       
     }
 
     @GetMapping( path = "/{id}")
     public Optional<employeeModel> getbyId(@PathVariable("id") Long id) {
-        return "hola";
+        return this.employeeservice.getbyId(id);
     }
 
     // @GetMapping("/query")
